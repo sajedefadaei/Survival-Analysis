@@ -50,16 +50,4 @@ install.packages(c("survival", "survminer", "tidyverse"))
 
 The script produces a stratified Kaplan–Meier survival plot ("TCGA-LUAD Survival Analysis for TCN1") comparing overall survival between patients with high versus low *TCN1* expression, with the hazard ratio, 95% confidence interval, and Cox model p-value displayed on the plot.
 
-## Known Issues / Notes
-
-- Line `query_clinical$results[[1]] <- df` assigns an undefined variable `df` and will raise an error as written; clinical results should instead be assigned from `query_clinical$results[[1]]` itself or the relevant downloaded object before calling `GDCprepare_clinic()`.
-- The final `survdiff()` result (`fit2`) is computed but not explicitly printed or reported alongside the Cox model results; consider adding `print(fit2)` or extracting its p-value for direct comparison with the Cox model's Wald p-value.
-- The cohort is limited to the first 200 primary tumor cases returned by the GDC query rather than the full TCGA-LUAD cohort; results should be interpreted as exploratory given this reduced sample size.
-
-## Repository Structure
-
-```
-.
-├── survival_analysis.R
-└── README.md
-```
+![Kaplan–Meier Survival Analysis for TCN1](./Kaplan_meier_TCN1.png)
